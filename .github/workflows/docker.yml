@@ -6,6 +6,7 @@ on:
     branches: ["main"]
     paths:
       - 'Dockerfile*'
+      - '.github/**/*'
 
 jobs:
   push_to_registry:
@@ -33,6 +34,9 @@ jobs:
           tags: |
             type=raw,value=${{ matrix.postgres_version }},enable=${{ matrix.os == 'ubuntu' }}
             type=raw,value=${{ matrix.postgres_version }}-${{ matrix.os }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
