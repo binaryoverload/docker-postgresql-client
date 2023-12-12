@@ -1,0 +1,5 @@
+ARG POSTGRES_VERSION=15
+
+FROM alpine:latest
+
+RUN apk update && apt add postgresql${POSTGRES_VERSION}-client
