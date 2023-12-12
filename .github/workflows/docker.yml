@@ -31,7 +31,7 @@ jobs:
         with:
           images: binaryoverload/postgresql-client
           tags: |
-            type=raw,value=${{ matrix.postgres_version }},enable=${{ matrix.os == "ubuntu" }}
+            type=raw,value=${{ matrix.postgres_version }},enable=${{ matrix.os == 'ubuntu' }}
             type=raw,value=${{ matrix.postgres_version }}-${{ matrix.os }}
       
       - name: Build and push Docker image
