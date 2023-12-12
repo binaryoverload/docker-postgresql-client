@@ -1,10 +1,11 @@
 name: Publish Docker image
 
 on:
+  workflow_dispatch:
   push:
     branches: ["main"]
     paths:
-      - 'Dockerfile'
+      - 'Dockerfile*'
       - 'scripts/**/*.sh'
 
 jobs:
@@ -39,12 +40,11 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          file: ./Dockerfile
+          file: ./Dockerfile.${{ matrix.os }} 
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             POSTGRES_VERSION=${{ matrix.postgres_version }}
-            OS=${{ matrix.os }} 
           cache-from: type=gha
           cache-to: type=gha,mode=max
