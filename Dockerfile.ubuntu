@@ -2,9 +2,9 @@ ARG POSTGRES_VERSION=15
 
 FROM ubuntu:latest AS base
 
-RUN apt-get -y update && apt-get -y install wget &&
-    echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list &&
-    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - &&
+RUN apt-get -y update && apt-get -y install wget && \
+    echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
     apt-get -y update
 
 RUN apt-get -y install postgresql-client-${POSTGRES_VERSION}
