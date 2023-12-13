@@ -1,5 +1,6 @@
 # binaryoverload/postgresql-client 
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/binaryoverload/docker-postgresql-client/docker.yml)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/binaryoverload/docker-postgresql-client/docker.yml) [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-gray?logo=docker)](https://hub.docker.com/r/binaryoverload/postgresql-client) [![GitHub](https://img.shields.io/badge/GitHub-black?logo=github&logoColor=white)](https://github.com/binaryoverload/docker-postgresql-client/)
+
 
 A Docker image for all of the PostgreSQL client executables, including:
  - `pg_dump` - Extract a PostgreSQL database into a script file or other archive file
