@@ -1,4 +1,4 @@
-# docker-postgresql-client 
+# binaryoverload/postgresql-client 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/binaryoverload/docker-postgresql-client/docker.yml)
 
 A Docker image for all of the PostgreSQL client executables, including:
