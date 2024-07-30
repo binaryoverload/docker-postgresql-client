@@ -11,8 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        postgres_version: [12, 13, 14, 15, 16]
         os: [ubuntu, alpine]
+        postgres_version: [12, 13, 14, 15, 16]
+        exclude:
+          - os: alpine
+            postgres_version: 12
+          - os: alpine
+            postgres_version: 13
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
