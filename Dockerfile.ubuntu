@@ -7,4 +7,4 @@ RUN apt-get -y update && apt-get -y install lsb-release ca-certificates wget gnu
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
     apt-get -y update
 
-RUN apt-get -y install postgresql-client-${POSTGRES_VERSION}
+RUN apt-get -y install postgresql-client-$POSTGRES_VERSION
