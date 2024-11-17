@@ -7,12 +7,12 @@ on:
 
 jobs:
   push_to_registry:
-    name: Push Docker image to Docker Hub
+    name: Publish Image
     runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [ubuntu, alpine]
-        postgres_version: [12, 13, 14, 15, 16, 17]
+        postgres_version: [12, 13, 14, 15, 16]
         exclude:
           - os: alpine
             postgres_version: 12
