@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: [postgresql-client, mariadb-client]
+        package: [postgresql-client, mariadb-client, backup-client]
         include:
           - package: postgresql-client
             description: A PostgreSQL client image with built-in file transfer and backup tools.
@@ -22,6 +22,10 @@ jobs:
           - package: mariadb-client
             description: A MariaDB client image with built-in file transfer and backup tools.
             readme: ./mariadb/README.md
+
+          - package: backup-client
+            description: An image with built-in file transfer and backup tools.
+            readme: ./backup/README.md
 
     steps:
       - uses: actions/checkout@v4

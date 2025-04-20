@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches: ["main"]
+    paths:
+      - backup/Dockerfile.*
+      - .github/workflows/docker-backup.yml
 
 jobs:
   publish_backup:
