@@ -8,6 +8,14 @@ on:
       - postgres/Dockerfile.*
       - .github/workflows/docker-postgres.yml
 
+env:
+  REGISTRY: index.docker.io
+  IMAGE_NAME: binaryoverload/postgres-client
+
+permissions:
+  id-token: write
+  attestations: write
+
 jobs:
   publish_postgres:
     name: Publish Postgres Images
@@ -38,7 +46,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: binaryoverload/postgresql-client
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=${{ matrix.postgres_version }},enable=${{ matrix.os == 'ubuntu' }}
             type=raw,value=${{ matrix.postgres_version }}-${{ matrix.os }}
@@ -48,6 +56,7 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
+        id: push
         with:
           context: ./postgres
           platforms: linux/amd64,linux/arm64
@@ -59,3 +68,11 @@ jobs:
             POSTGRES_VERSION=${{ matrix.postgres_version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Attest
+        uses: actions/attest-build-provenance@v2
+        id: attest
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true

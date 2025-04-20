@@ -8,6 +8,14 @@ on:
       - mariadb/Dockerfile.*
       - .github/workflows/docker-mariadb.yml
 
+env:
+  REGISTRY: index.docker.io
+  IMAGE_NAME: binaryoverload/mariadb-client
+
+permissions:
+  id-token: write
+  attestations: write
+
 jobs:
   publish_mariadb:
     name: Publish MariaDB Images
@@ -30,7 +38,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: binaryoverload/mariadb-client
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest,enable=${{ matrix.os == 'ubuntu' }}
             type=raw,value=${{ matrix.os }}
@@ -39,6 +47,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build and push Docker image
+        id: push
         uses: docker/build-push-action@v5
         with:
           context: ./mariadb
@@ -49,3 +58,11 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Attest
+        uses: actions/attest-build-provenance@v2
+        id: attest
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
