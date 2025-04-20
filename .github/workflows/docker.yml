@@ -18,6 +18,8 @@ jobs:
             postgres_version: 12
           - os: alpine
             postgres_version: 13
+          - os: alpine
+            postgres_version: 14
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
