@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu, alpine]
-        postgres_version: [12, 13, 14, 15, 16]
+        postgres_version: [12, 13, 14, 15, 16, 17]
         exclude:
           - os: alpine
             postgres_version: 12

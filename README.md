@@ -13,11 +13,20 @@ A Docker image for all of the PostgreSQL client executables, including:
 - `pg_verifybackup` - Verify the integrity of a base backup of a PostgreSQL cluster
 - [And many more...](https://www.postgresql.org/docs/current/reference-client.html)
 
+The image also includes common file transfer utilities to allow use of this image for backup and restore operations, including:
+
+- `curl`, `wget` - Download files from the internet
+- `tar`, `gzip`, `zip` and `xz` - Archive and compress files
+- `openssl` and `gpg` - Encrypt and decrypt files
+- `rsync` - Synchronize files and directories between two locations
+- `rclone` - https://rclone.org/ - Sync files and directories to and from cloud storage providers
+
 This image is intended to be used as a base image for running PostgreSQL scripts and as such is deployed in both Ubuntu (Default) and Alpine distro variants with all major supported versions:
 
+- 17
 - 16
 - 15
-- 14
+- 14 (Ubuntu only)
 - 13 (Ubuntu only)
 - 12 (Ubuntu only)
 

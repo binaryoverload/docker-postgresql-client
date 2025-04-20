@@ -1,5 +1,12 @@
 FROM alpine:latest
 
 ARG POSTGRES_VERSION=15
+ARG TARGETARCH
 
-RUN apk update && apk add postgresql${POSTGRES_VERSION}-client
+RUN apk update && apk add zip gzip xz curl wget rsync openssl gpg ca-certificates lsb-release postgresql${POSTGRES_VERSION}-client
+
+# Install rclone
+RUN curl -sSL https://downloads.rclone.org/rclone-current-linux-$TARGETARCH.zip -o rclone.zip && \
+    unzip rclone.zip && \
+    install -Dm755 rclone-*-linux-$TARGETARCH/rclone /usr/bin/rclone && \
+    rm -rf rclone.zip rclone-*-linux-$TARGETARCH
