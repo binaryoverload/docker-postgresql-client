@@ -4,7 +4,7 @@ ARG TARGETARCH
 
 # Install common utils and add mariadb utils
 RUN apt-get -y update && \
-    apt-get -y install zip gzip xz-utils curl wget rsync openssl gpg ca-certificates lsb-release mariadb-client
+    apt-get -y install zip gzip xz-utils curl wget rsync openssl gpg cron ca-certificates lsb-release mariadb-client
 
 # Install rclone
 RUN curl -sSL https://downloads.rclone.org/rclone-current-linux-$TARGETARCH.zip -o rclone.zip && \

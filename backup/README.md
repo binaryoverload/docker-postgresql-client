@@ -9,5 +9,6 @@ A Docker image containing common backup and file transfer utilities for use in b
 - `openssl` and `gpg` - Encrypt and decrypt files
 - `rsync` - Synchronize files and directories between two locations
 - `rclone` - https://rclone.org/ - Sync files and directories to and from cloud storage providers
+- `cron` - Schedule tasks to run at specific intervals
 
 This image is intended to be used as a base image for running scripts and as such is deployed in both Ubuntu (Default) and Alpine distro variants.

@@ -21,5 +21,6 @@ The image also includes common file transfer utilities to allow use of this imag
 - `openssl` and `gpg` - Encrypt and decrypt files
 - `rsync` - Synchronize files and directories between two locations
 - `rclone` - https://rclone.org/ - Sync files and directories to and from cloud storage providers
+- `cron` - Schedule tasks to run at specific intervals
 
 This image is intended to be used as a base image for running MongoDB scripts and as such is deployed in both Ubuntu (Default) and Alpine distro variants.

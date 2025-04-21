@@ -19,3 +19,4 @@ Each image contains the following utilities along with the database client:
 - `openssl` and `gpg` - Encrypt and decrypt files
 - `rsync` - Synchronize files and directories between two locations
 - `rclone` - https://rclone.org/ - Sync files and directories to and from cloud storage providers
+- `cron` - Schedule tasks to run at specific intervals
