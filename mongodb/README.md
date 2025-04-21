@@ -4,16 +4,6 @@
 
 A Docker image for all of the MongoDB client executables, including:
 
-# cmd:bsondump
-
-<!-- cmd:mongodump
-cmd:mongoexport
-cmd:mongofiles
-cmd:mongoimport
-cmd:mongorestore
-cmd:mongostat
-cmd:mongotop -->
-
 - `mongosh` - The mongodb shell, a command-line interface for interacting with a mongodb server
 - `mongodump` - Dump a database or a collection of databases to a file
 - `mongorestore` - Restore a database from a dump file
