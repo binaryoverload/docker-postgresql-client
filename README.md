@@ -4,9 +4,9 @@ This repo contains Docker images for with backup and restore utilities for the f
 
 - [PostgreSQL](./postgres)
 - [MariaDB](./mariadb) (aka MySQL)
-- MongoDB (coming soon)
+- [MongoDB](./mongodb)
 
-It also contains an image without any database client, but with the same utilities.
+It also contains an [image without any database client](./backup), but with the same utilities.
 
 These images are designed to be used as base images for running backup and restore scripts, and are deployed in both Ubuntu (Default) and Alpine distro variants with all major supported versions of the database clients.
 
