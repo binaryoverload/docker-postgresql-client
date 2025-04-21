@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: index.docker.io
-  IMAGE_NAME: binaryoverload/postgres-client
+  IMAGE_NAME: binaryoverload/postgresql-client
 
 permissions:
   id-token: write
