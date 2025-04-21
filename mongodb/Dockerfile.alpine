@@ -1,0 +1,11 @@
+FROM alpine:latest
+
+ARG TARGETARCH
+
+RUN apk update && apk add zip gzip xz curl wget rsync openssl gpg ca-certificates lsb-release mongodb-tools nodejs npm && npm i -g mongosh 
+
+# Install rclone
+RUN curl -sSL https://downloads.rclone.org/rclone-current-linux-$TARGETARCH.zip -o rclone.zip && \
+    unzip rclone.zip && \
+    install -Dm755 rclone-*-linux-$TARGETARCH/rclone /usr/bin/rclone && \
+    rm -rf rclone.zip rclone-*-linux-$TARGETARCH
